@@ -18,7 +18,6 @@ public class Main {
                         stack.push(lineSplit[i]);
                     }
                     kernel.ExecuteCall(id);
-                    
                 }
         }
     }

@@ -5,25 +5,24 @@ import java.util.HashMap;
 
 public class Kernel {
 	Stack stack;
-    public HashMap<Integer, SystemCall> SystemCalls;
+    public HashMap<Integer, SystemCall> SystemCalls = new HashMap<Integer, SystemCall>();
     
     public Kernel(Stack stack)
     {
         this.stack = stack;
         SystemCalls = new HashMap<>();
-        SystemCalls.put(10,new SystemCall("a"));
-        SystemCalls.put(11,new SystemCall("a", "b"));
-        SystemCalls.put(12,new SystemCall("a", "b", "c"));
-        SystemCalls.put(13,new SystemCall("a", "b", "c","d"));
-        SystemCalls.put(14,new SystemCall("a", "b", "c","d","e"));
+        SystemCalls.put(10,new SystemCall(new Arguments("str")));
+        SystemCalls.put(11,new SystemCall(new Arguments("int","str")));
+        SystemCalls.put(12,new SystemCall(new Arguments("str","str")));
+        SystemCalls.put(13,new SystemCall(new Arguments("int","int")));
+        SystemCalls.put(14,new SystemCall(new Arguments("int")));
     }
 
     public void ExecuteCall(int id){
-    	if (id < 0 || id >= SystemCalls.size()){
-            System.out.print("Неверный id\n");
+    	if (!SystemCalls.containsKey(id)){
+            System.out.print("Вызов номер "+id+" не существует\n");
             return;
         }
-        List<String> args = SystemCalls.get(id).getArgs();
 
         ArrayList list = new ArrayList();
       
@@ -35,20 +34,22 @@ public class Kernel {
         		break;
         	}
         }
-
-        if (list.size() != args.size()){
-            System.out.print("Кол-во аргументов не совпадает");
-            return;
+         
+        if(list.size()==0) {
+        	System.out.print("Количество аргументов не совпадает");
+        	return;
         }
 
-        for (int i = args.size() - 1; i >= 0; i--) {
-            if (!stack.pop().equals(args.get(i))) {
-                System.out.print("Аргументы не совпадают");
-                return;
-            }
+        for (int i = 0; i<list.size(); i++) {
+        	if(list.get(i) != "int" || list.get(i) != "str") {
+        		System.out.print("Неверный аргумент");
+        		return;
+        	}
         }
+        
         System.out.print(SystemCalls.get(id).Execute());
 
     }
-
+    
+   
 }

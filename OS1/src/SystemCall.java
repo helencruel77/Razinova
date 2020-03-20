@@ -1,14 +1,16 @@
 import java.util.Arrays;
 import java.util.List;
 
+import com.sun.jdi.connect.Connector.Argument;
+
 public class SystemCall {
-	private List<String> Arguments;
-    public SystemCall(String... args) {
-        Arguments = Arrays.asList(args);
+	private Arguments argument;
+    public SystemCall(Arguments argument) {
+        this.argument = argument;
     }
     
-    public List getArgs(){
-        return Arguments;
+    public Arguments getArgs(){
+        return argument;
     }
 
     public String Execute(){
