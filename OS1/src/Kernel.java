@@ -6,11 +6,9 @@ import java.util.HashMap;
 public class Kernel {
 	Stack stack;
     public HashMap<Integer, SystemCall> SystemCalls = new HashMap<Integer, SystemCall>();
-    
     public Kernel(Stack stack)
     {
         this.stack = stack;
-        SystemCalls = new HashMap<>();
         SystemCalls.put(10,new SystemCall(new Arguments("str")));
         SystemCalls.put(11,new SystemCall(new Arguments("int","str")));
         SystemCalls.put(12,new SystemCall(new Arguments("str","str")));
@@ -26,15 +24,10 @@ public class Kernel {
 
         ArrayList list = new ArrayList();
       
-        while(true) {
-        	try {
+        for (int i = 0; i< list.size(); i++) {
+        	if(stack.pop()!=null)
         		list.add(stack.pop());
-        	}
-        	catch(Exception ex) {
-        		break;
-        	}
         }
-         
         if(list.size()==0) {
         	System.out.print(" оличество аргументов не совпадает");
         	return;
@@ -50,6 +43,4 @@ public class Kernel {
         System.out.print(SystemCalls.get(id).Execute());
 
     }
-    
-   
 }
