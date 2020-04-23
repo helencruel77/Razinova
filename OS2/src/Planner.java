@@ -1,15 +1,18 @@
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Planner {
 
 	private int Count = 0;
-	private List<Process> processes;
-	int randomTime = (int) Math.random() * 7;
-	int randomCount = (int) Math.random() * 5;
+	private ArrayList<Process> processes;
+	Random randomTime = new Random ();
+	Random randomCount = new Random ();
 	
 	public Planner(int Count) {
-		for(int i = 0; i < Count; i++) {
-			processes.add(new Process(i, randomTime, randomCount));
+		this.Count = Count;
+		processes = new ArrayList<Process>();
+		for(int i = 1; i < Count; i++) {
+			processes.add(new Process(i, randomTime.nextInt(10)+5, randomCount.nextInt(5) + 1));
 		}
 	}
 	

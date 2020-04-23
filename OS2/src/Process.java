@@ -1,21 +1,26 @@
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Process {
 
 	private int id = 0;
 	private int quant_Process = 0;
 	private int time = 0;
-	private List<Thread> threads;
-	int randomTime = (int) Math.random() * 7;
-	int randomCount = (int) Math.random() * 5;
+	private int Count = 0;
+	private ArrayList<Thread> threads;
+	Random randomTime = new Random ();
+	Random randomCount = new Random ();
 	
 	public Process (int id, int quant_Process, int Count) {
 		this.id = id;
+		this.Count = Count;
 		this.quant_Process = quant_Process;
 		this.time = quant_Process;
-		
+		threads = new ArrayList<Thread>();
 		for(int i = 0; i < Count; i ++) {
-			threads.add(new Thread(i, randomTime, randomCount));
+			threads.add(new Thread(i, 
+					randomTime.nextInt(10)+5,
+					randomCount.nextInt(5) + 1));
 		}
 	}
 	
@@ -44,7 +49,7 @@ public class Process {
 			getThread().reduceQuant();
 			reduceTime();
 			if (getThread().getQuant() < 0) {
-				System.out.println("Поток" + id + "выполнен");
+				System.out.println("Поток " + id + " выполнен");
 				threads.remove(0);
 			}
 				
