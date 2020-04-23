@@ -8,4 +8,10 @@ public class Theard {
 		this.id = id;
 		this.quant_Theard = quant_Theard;
 	}
+	public String getId() {
+		return "Поток" + id;
+	}
+	public int getQuant() {
+		return quant_Theard;
+	}
 }

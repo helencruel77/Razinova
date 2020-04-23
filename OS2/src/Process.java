@@ -8,4 +8,16 @@ public class Process {
 		this.id = id;
 		this.quant_Process = quant_Process;
 	}
+	
+	public String getId() {
+		return "Процесс" + id;
+	}
+	
+	public int getQuant() {
+		return quant_Process;
+	}
+	
+	public void run() {
+		
+	}
 }
