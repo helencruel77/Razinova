@@ -3,10 +3,10 @@ import java.util.Random;
 
 public class Process {
 
-	private int id = 0;
-	private int quant_Process = 0;
-	private int time = 0;
-	private int Count = 0;
+	private int id;
+	private int quant_Process;
+	private int time;
+	private int Count;
 	private ArrayList<Thread> threads;
 	Random randomTime = new Random ();
 	Random randomCount = new Random ();
@@ -28,6 +28,7 @@ public class Process {
 		return "Процесс" + id;
 	}
 	
+	
 	public int getQuant() {
 		return quant_Process;
 	}
@@ -38,22 +39,40 @@ public class Process {
         	return null;
         return threads.get(0);
     }
+	
 	public int reduceTime() {
 		--time;
 		return time;
 	}
 	
+	public boolean restore() {
+		if(getTime() == 0 && getThread().getQuant() > 0) {
+			time = quant_Process;
+			return true;
+		}
+		return false;
+	}
+	public int getTime() {
+		return time;
+	}
+	
 	public void run() {
-		if (getThread().getQuant() >= 0 ) {
 			System.out.println(getThread().printWork());
+		if (getThread().getQuant() >= 0 ) {
 			getThread().reduceQuant();
 			reduceTime();
-			if (getThread().getQuant() < 0) {
+			if (getThread().getQuant() == 0) {
 				System.out.println("Поток " + id + " выполнен");
 				threads.remove(0);
 			}
 				
 		}
+	}
+
+	public int Size() {
+		if (threads.size() == 0) 
+			return 0;
+		return threads.size();
 	}
 }
 
