@@ -8,9 +8,6 @@ public class Thread {
 		this.id = id;
 		this.quant_Thread = quant_Thread;
 	}
-	public String getId() {
-		return "Поток" + id;
-	}
 	public int getQuant() {
 		return quant_Thread;
 	}
