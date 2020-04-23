@@ -46,7 +46,7 @@ public class Process {
 	}
 	
 	public boolean restore() {
-		if(getTime() == 0 && getThread().getQuant() > 0) {
+		if(threads.size() != 0 && getTime() == 0 && getThread().getQuant() > 0) {
 			time = quant_Process;
 			return true;
 		}
@@ -57,8 +57,9 @@ public class Process {
 	}
 	
 	public void run() {
+		if (threads.size() != 0)
 			System.out.println(getThread().printWork());
-		if (getThread().getQuant() >= 0 ) {
+		if (threads.size() != 0 && getThread().getQuant() >= 0 ) {
 			getThread().reduceQuant();
 			reduceTime();
 			if (getThread().getQuant() == 0) {
