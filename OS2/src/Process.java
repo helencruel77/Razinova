@@ -18,9 +18,7 @@ public class Process {
 		this.time = quant_Process;
 		threads = new ArrayList<Thread>();
 		for(int i = 0; i < Count; i ++) {
-			threads.add(new Thread(i, 
-					randomTime.nextInt(10)+5,
-					randomCount.nextInt(5) + 1));
+			threads.add(new Thread(i, quant_Process/Count));
 		}
 	}
 	
