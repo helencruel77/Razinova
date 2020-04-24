@@ -6,6 +6,7 @@ public class Process {
 	private int id;
 	private int quant_Process;
 	private int time;
+	private int timeThread;
 	private int Count;
 	private ArrayList<Thread> threads;
 	Random randomTime = new Random ();
@@ -16,16 +17,17 @@ public class Process {
 		this.Count = Count;
 		this.quant_Process = quant_Process;
 		this.time = quant_Process;
+		this.timeThread = quant_Process;
 		threads = new ArrayList<Thread>();
-		for(int i = 0; i < Count; i ++) {
-			threads.add(new Thread(i, quant_Process/Count));
+		for(int i = 1; i < Count; i ++) {
+			if (timeThread != 0)
+			threads.add(new Thread(i, --timeThread));
 		}
 	}
 	
 	public String getId() {
 		return "Процесс" + id;
 	}
-	
 	
 	public int getQuant() {
 		return quant_Process;
@@ -50,6 +52,7 @@ public class Process {
 		}
 		return false;
 	}
+	
 	public int getTime() {
 		return time;
 	}
