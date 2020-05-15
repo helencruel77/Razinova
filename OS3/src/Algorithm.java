@@ -35,6 +35,18 @@ public class Algorithm {
 		return result;
 	}
 	
+	private int getMinElement( int[] elements) {
+		int min = elements[0];
+    	int index = 0;
+    	for (int i = 0; i < elements.length; i++) {
+    		if (elements[i] < min) {
+    			min = elements[i];
+    			index = i;
+    		}
+    	}
+    	return index;
+	}
+	
 	private boolean getAllUsed (int[] all) {
 		for ( int i = 0; i < all.length; i++) {
 			if(all[i] == 1) {
