@@ -19,10 +19,28 @@ public class Algorithm {
 		int[] lastUsed = new int[realMemory.size()];
 		for(int i = 0; i < lastUsed.length; i++) {
 			lastUsed[i] = -1;
-			for(int j = 0; j < loanMemory.size(); j ++) {
-				int temp = loanMemory.get(i);
+		}
+		point:
+		for(int j = 0; j < loanMemory.size(); j ++) {
+			int temp = loanMemory.get(j);
+			for(int k = 0; k < virtualMemory.Size(); k++) {
+				if(virtualMemory.Get(k).getAvailability() && page.getR() &&
+						lastUsed[virtualMemory.Get(k).getIndexRealPage()] == -1) {
+					lastUsed[virtualMemory.Get(k).getIndexRealPage()] = j;
+					
+				}
 			}
 		}
+		
 		return result;
+	}
+	
+	private boolean getAllUsed (int[] all) {
+		for ( int i = 0; i < all.length; i++) {
+			if(all[i] == 1) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
