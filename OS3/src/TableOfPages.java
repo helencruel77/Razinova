@@ -12,4 +12,8 @@ public class TableOfPages {
 	public int Size() {
 		return pagesRecords.size();
 	}
+	
+	public Page Get(int index) {
+		return pagesRecords.get(index);
+	}
 }
