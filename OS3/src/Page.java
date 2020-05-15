@@ -17,6 +17,10 @@ public class Page {
 		return availability;
 	}
 	
+	public void setAvailability() {
+		this.availability = availability;
+	}
+	
 	public void setR(boolean R) {
 		this.R = R;
 	}
