@@ -2,18 +2,35 @@
 public class Page {
 
 	private boolean availability;
-	private boolean R;
+	private int R;
+	private int time;
+	private int ñurrentTime = 10;
 	private int indexRealPage;
 	
-	public Page (boolean availability) {
+	public Page (int R, boolean availability, int time) {
+		this.R = R;
+		this.time = time;
 		this.availability = availability;
+	}
+	
+	public void setTime() {
+		this.time = ñurrentTime; 
+	}
+	
+	public int getTime() {
+		return time;
+	}
+	
+	public void setR(int R) {
+		this.R = R;
+	}
+	
+	public int getR() {
+		return R;
 	}
 	
 	public int getIndexRealPage() {
 		return indexRealPage;
-	}
-	public void setIndexRealPage(int indexRealPage) {
-		this.indexRealPage = indexRealPage;
 	}
 	
 	public boolean getAvailability() {
@@ -22,14 +39,6 @@ public class Page {
 	
 	public void setAvailability(boolean availability) {
 		this.availability = availability;
-	}
-	
-	public void setR(boolean R) {
-		this.R = R;
-	}
-	
-	public boolean getR() {
-		return R;
 	}
 	
 }
