@@ -7,7 +7,7 @@ public class Algorithm {
 	private LinkedList<Integer> loanMemory;
 	
 	public Algorithm (TableOfPages virtualMemory,
-			LinkedList<Page> realMemory) {
+			LinkedList<Page> realMemory, LinkedList<Integer> loanMemory) {
 		this.virtualMemory = virtualMemory;
 		this.realMemory = realMemory;
 		this.loanMemory = loanMemory;

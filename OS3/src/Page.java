@@ -12,6 +12,9 @@ public class Page {
 	public int getIndexRealPage() {
 		return indexRealPage;
 	}
+	public void setIndexRealPage(int indexRealPage) {
+		this.indexRealPage = indexRealPage;
+	}
 	
 	public boolean getAvailability() {
 		return availability;
