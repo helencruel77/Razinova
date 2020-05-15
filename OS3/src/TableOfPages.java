@@ -8,4 +8,8 @@ public class TableOfPages {
 	public TableOfPages() {
 		pagesRecords = new LinkedList<Page>();
 	}
+	
+	public int Size() {
+		return pagesRecords.size();
+	}
 }

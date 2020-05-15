@@ -8,6 +8,10 @@ public class Page {
 		this.availability = availability;
 	}
 	
+	public boolean getAvailability() {
+		return availability;
+	}
+	
 	public void setR(boolean R) {
 		this.R = R;
 	}
