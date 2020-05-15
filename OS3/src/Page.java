@@ -17,7 +17,7 @@ public class Page {
 		return availability;
 	}
 	
-	public void setAvailability() {
+	public void setAvailability(boolean availability) {
 		this.availability = availability;
 	}
 	
