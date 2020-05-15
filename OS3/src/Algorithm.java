@@ -13,8 +13,8 @@ public class Algorithm {
 		this.loanMemory = loanMemory;
 	}
 	
-	public int[] LRU(Page page) {
-		int[] result = new int[3];
+	public Object[] LRU(Page page) {
+		Object[] result = new Object[3];
 		int flag = 0;
 		int[] lastUsed = new int[realMemory.size()];
 		for(int i = 0; i < lastUsed.length; i++) {
@@ -22,16 +22,25 @@ public class Algorithm {
 		}
 		point:
 		for(int j = 0; j < loanMemory.size(); j ++) {
-			int temp = loanMemory.get(j);
 			for(int k = 0; k < virtualMemory.Size(); k++) {
 				if(virtualMemory.Get(k).getAvailability() && page.getR() &&
 						lastUsed[virtualMemory.Get(k).getIndexRealPage()] == -1) {
 					lastUsed[virtualMemory.Get(k).getIndexRealPage()] = j;
-					
+					if (getAllUsed(lastUsed)) {
+						flag = getMinElement(lastUsed);
+						break point;
+					}
 				}
 			}
 		}
-		
+		realMemory.get(flag).setAvailability(false);
+		realMemory.get(flag).setIndexRealPage(-43424);
+		realMemory.remove(flag);
+		page.setIndexRealPage(flag);
+        page.setAvailability(true);
+        result[0] = realMemory;
+        result[1] = virtualMemory.getPagesRecords();
+        result[2] = loanMemory;
 		return result;
 	}
 	
