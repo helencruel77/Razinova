@@ -73,7 +73,7 @@ public class Main {
 				if (file != null) {
 					Place[] ps = file.getNode().getpositions();
 					for (int i = 0; i < ps.length; i++) {
-						Manager.setMemoryPoint(ps[i].I, 2);
+						Manager.setMemoryPoint(ps[i].getI(), 2);
 					}
 				}
 				File f = Changes.getfile(s);
@@ -81,7 +81,7 @@ public class Main {
 					Place[] ps = f.getNode().getpositions();
 					if (ps != null) {
 						for (int i = 0; i < ps.length; i++) {
-							Manager.setMemoryPoint(ps[i].I, 3);
+							Manager.setMemoryPoint(ps[i].getI(), 3);
 						}
 					}
 					panel.repaint();

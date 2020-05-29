@@ -76,7 +76,7 @@ public class Changes extends JPanel{
 		Place[] ps = getfile(s).getNode().getpositions();
 		if (ps != null) {
 			for (int i = 0; i < ps.length; i++) {
-				memory[ps[i].I] = 1;
+				memory[ps[i].getI()] = 1;
 			}
 		}
 		countFree += getfile(s).getNode().fileSize() / 2;

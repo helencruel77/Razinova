@@ -35,7 +35,7 @@ public class IndexNode {
 	public String toStr() {
 		String s = "";
 		for (int i = 0; i < positions.length; i++) {
-			s += i + " : I " + positions[i].I
+			s += i + " : I " + positions[i].getI()
 					+" имя: "+ fileName +" размер: "+ fileSize + "\n";
 		}
 		return s;
