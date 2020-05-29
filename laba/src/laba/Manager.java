@@ -80,4 +80,7 @@ public class Manager extends JPanel {
 	public static void setFree() {
 		countFree = size / sixe_i;
 	}
+	public ArrayList<File> getFiles(){
+		return files;
+	}
 }

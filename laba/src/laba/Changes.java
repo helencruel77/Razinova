@@ -12,19 +12,18 @@ public class Changes extends JPanel{
 	private static int[] memory;
 	private static int countElement;
 	private static int countFree;
-	private static ArrayList<File> files;
 
 	public Changes(int[] memory, int countElement, int countFree, ArrayList<File> files) {
 		this.memory = memory;
 		this.countElement = countElement;
 		this.countFree = countFree;
-		this.files = files;
 	}
 
 	public static boolean addFile(String name, int size) {
-		if (files != null) {
-			for (int i = 0; i < files.size(); i++) {
-				if (files.get(i).getNode().getName().equals(name)) {
+		Manager manager = new Manager();
+		if (manager.getFiles() != null) {
+			for (int i = 0; i < manager.getFiles().size(); i++) {
+				if (manager.getFiles().get(i).getNode().getName().equals(name)) {
 					JOptionPane.showMessageDialog(null, "Такой файл уже есть.");
 					return false;
 				}
@@ -68,11 +67,12 @@ public class Changes extends JPanel{
 			}
 		}
 		File file = new File(knot);
-		files.add(file);
+		manager.getFiles().add(file);
 		return true;
 	}
 
 	public static void Delete(String s) {
+		Manager manager = new Manager();
 		Place[] ps = getfile(s).getNode().getpositions();
 		if (ps != null) {
 			for (int i = 0; i < ps.length; i++) {
@@ -80,14 +80,15 @@ public class Changes extends JPanel{
 			}
 		}
 		countFree += getfile(s).getNode().fileSize() / 2;
-		files.remove(getfile(s));
+		manager.getFiles().remove(getfile(s));
 	}
 
 	public static File getfile(String s) {
-		if (files != null) {
-			for (int i = 0; i < files.size(); i++) {
-				if (files.get(i).getNode().getName().equals(s)) {
-					return files.get(i);
+		Manager manager = new Manager();
+		if (manager.getFiles() != null) {
+			for (int i = 0; i < manager.getFiles().size(); i++) {
+				if (manager.getFiles().get(i).getNode().getName().equals(s)) {
+					return manager.getFiles().get(i);
 				}
 			}
 		}
